@@ -1,16 +1,12 @@
 const { Client, GatewayIntentBits, Partials } = require("discord.js");
 const { DisTube } = require("distube");
-const { SpotifyPlugin } = require("@distube/spotify");
-const { SoundCloudPlugin } = require("@distube/soundcloud");
 const { DeezerPlugin } = require("@distube/deezer");
-const { YtDlpPlugin } = require("@distube/yt-dlp");
 const config = require("./config.js");
 const fs = require("fs");
 const debug_mode = 0;
 const cron = require("node-cron");
 const moment = require("moment-timezone");
 const dataTime = require("./data_time.js");
-const { test_to_server } = require('./function/cotodataserver.js');
 
 debug_mode === 1 ? console.log("dataTime 內容:", dataTime) : {};
 
@@ -118,11 +114,6 @@ if(config.mongodbURL || process.env.MONGO){
   useUnifiedTopology: true,
   }).then(async () => {
       console.log(`Connected MongoDB`)
-      try {
-          test_to_server()
-      } catch (e) {
-          console.log('MySQL登入錯誤')
-      };
   }).catch((err) => {
     console.log("\nMongoDB Error: " + err + "\n\n" + lang.error4)
     })

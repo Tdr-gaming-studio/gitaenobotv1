@@ -1,6 +1,6 @@
 {
   "name": "gitaenobotv1",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "gitaenobotv1 gitadiscordbot的簡化版",
   "main": "index.js",
   "author": {
