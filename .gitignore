@@ -1,0 +1,15 @@
+.DS_Store
+.vscode/
+node_modules/
+*.log
+*.tar.gz
+.env
+discordbot-8th-main.sln
+docs/
+.replit
+discordbot-8th-main.njsproj.user
+*.njsproj
+README.md
+.git/
+.vs/
+config.js

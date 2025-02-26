@@ -1,0 +1,39 @@
+{
+  "name": "gitaenobotv1",
+  "version": "0.0.0",
+  "description": "gitaenobotv1 gitadiscordbot的簡化版",
+  "main": "index.js",
+  "author": {
+    "name": "linlin"
+  },
+  "dependencies": {
+    "@discordjs/builders": "^1.9.0",
+    "@discordjs/opus": "^0.9.0",
+    "@discordjs/rest": "^2.4.0",
+    "@discordjs/voice": "^0.18.0",
+    "@distube/deezer": "^1.0.0",
+    "@top-gg/sdk": "^3.1.6",
+    "axios": "^1.7.9",
+    "discord.js": "^14.16.3",
+    "distube": "^4.0.4",
+    "express": "^4.21.1",
+    "ffmpeg": "^0.0.4",
+    "ffmpeg-static": "^5.2.0",
+    "libsodium-wrappers": "^0.7.15",
+    "moment-timezone": "^0.5.43",
+    "mongoose": "^8.8.3",
+    "mysql2": "^3.12.0",
+    "node-cron": "^3.0.2",
+    "sapphire": "^0.0.3",
+    "topgg-autoposter": "^2.0.2"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "setup": "npm install"
+  },
+  "devDependencies": {
+    "eslint": "^8.21.0"
+  },
+  "eslintConfig": {
+  }
+}
