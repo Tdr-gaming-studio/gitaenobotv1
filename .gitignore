@@ -9,7 +9,6 @@ docs/
 .replit
 discordbot-8th-main.njsproj.user
 *.njsproj
-README.md
 .git/
 .vs/
 config.js
