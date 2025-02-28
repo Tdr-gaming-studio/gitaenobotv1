@@ -32,6 +32,8 @@ client.config = config;
 client.language = config.language || "en";
 let lang = require(`./languages/${config.language || "en"}.js`);
 
+//事件讀取邏輯
+console.log("Loading events..."); //debug
 fs.readdir("./events", (err, files) => {
     if (err) {
         console.error(`Error reading events directory: ${err.message}`);
@@ -47,29 +49,43 @@ fs.readdir("./events", (err, files) => {
     });
 });
 
+//指令讀取邏輯(待更新)
+console.log("Loading commands..."); //debug
+client.commands = [];
+const function_config = require('./function.config.js');
 
 client.commands = [];
-fs.readdir(config.commandsDir, (err, files) => {
-    if (err) {
-        console.error(`Error reading commands directory: ${err.message}`);
-        return;
-    }
-    files.forEach(async (f) => {
-        try {
-            if (f.endsWith(".js")) {
-                let props = require(`${config.commandsDir}/${f}`);
-                client.commands.push({
-                    name: props.name,
-                    description: props.description,
-                    options: props.options,
-                });
-                console.log(`${lang.loadcmd}: ${props.name}`);
+
+Object.keys(function_config.type).forEach(type => {
+    const typeConfig = function_config.type[type];
+    if (typeConfig.status) {
+        fs.readdir(typeConfig.dir, (err, files) => {
+            if (err) {
+                console.error(`Error reading commands directory: ${err.message}`);
+                return;
             }
-        } catch (err) {
-            console.log(err);
-        }
-    });
+            files.forEach(async (f) => {
+                try {
+                    if (f.endsWith(".js")) {
+                        let props = require(`${typeConfig.dir}/${f}`);
+                        const commandName = f.replace('.js', '');
+                        if (typeConfig[commandName]) {
+                            client.commands.push({
+                                name: props.name,
+                                description: props.description,
+                                options: props.options,
+                            });
+                            console.log(`Loaded command: ${props.name}`);
+                        }
+                    }
+                } catch (err) {
+                    console.log(err);
+                }
+            });
+        });
+    }
 });
+
 
 
 if (config.TOKEN || process.env.TOKEN) {
@@ -86,6 +102,7 @@ client.login().catch((e) => {
     console.log('測試成功')
 });
 
+//morgoose 讀取邏輯(待更新)
 if (config.ex_mode === true) {
     if (config.mongodbURL || process.env.MONGO) {
         const mongoose = require("mongoose")

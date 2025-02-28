@@ -1,9 +1,10 @@
 const { ApplicationCommandOptionType } = require('discord.js')
-const db = require("../mongoDB");
+const db = require("../../mongoDB");
 module.exports = {
   name: "help",
   description: "這可以幫助你找到你需要的功能 - 若是你不知道指令該如何使用，請輸入此指令",
-  permissions: "0x0000000000000800",
+   permissions: "0x0000000000000800",
+   Type: "core",
   options: [
     {
       name: "info",
@@ -49,7 +50,7 @@ module.exports = {
       }
 
     } catch (e) {
-      const errorNotifer = require("../functions.js")
+      const errorNotifer = require("../../functions.js")
      errorNotifer(client, interaction, e, lang)
       }
   },

@@ -1,9 +1,10 @@
 const { EmbedBuilder } = require('discord.js')
-const db = require("../mongoDB");
+const db = require("../../mongoDB");
 module.exports = {
   name: "ping",
   description: "確定延遲和機器人基本運作正常.",
   permissions: "0x0000000000000800",
+  Type: "core",
   options: [],
   run: async (client, interaction) => {
     let lang = await db?.musicbot?.findOne({ guildID: interaction.guild.id })
@@ -30,7 +31,7 @@ module.exports = {
       }).catch(err => { })
 
     } catch (e) {
-      const errorNotifer = require("../functions.js")
+      const errorNotifer = require("../../functions.js")
      errorNotifer(client, interaction, e, lang)
       }
   },
