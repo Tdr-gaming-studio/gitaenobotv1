@@ -1,7 +1,7 @@
 {
   "name": "gitaenobotv1",
-  "version": "0.0.2",
-  "description": "gitaenobotv1 gitadiscordbot的簡化版",
+  "version": "1.0.0",
+  "description": "gitadiscordbot的簡化版",
   "main": "index.js",
   "author": {
     "name": "linlin"
