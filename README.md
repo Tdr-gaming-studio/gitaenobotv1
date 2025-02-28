@@ -8,6 +8,7 @@ Tdr-studio
 
 ## 說明
 `gitaenobotv1` 是基於 `discord.js v14` 的 Discord 機器人基礎架構，提供給初學者一個簡單易用的起點來建立自己的 Discord 機器人。
+`gitaenobot`系列中最基礎的版本，僅供基礎型功能提供架構，若是需要較複雜功能請使用後續版本
 
 ### 功能
 - 提供 Discord 機器人的基本框架
