@@ -29,12 +29,5 @@ console.log(lang.error4)
 }
 
 
-
-if(client.config.voteManager.status === true && client.config.voteManager.api_key){
-const { AutoPoster } = require('topgg-autoposter')
-const ap = AutoPoster(client.config.voteManager.api_key, client)
-ap.on('posted', () => {
-})
 }
 
-}

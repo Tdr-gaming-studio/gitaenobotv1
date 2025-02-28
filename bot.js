@@ -6,9 +6,9 @@ const fs = require("fs");
 const debug_mode = 0;
 const cron = require("node-cron");
 const moment = require("moment-timezone");
-const dataTime = require("./data_time.js");
 
-debug_mode === 1 ? console.log("dataTime 內容:", dataTime) : {};
+
+
 
 
 
@@ -29,68 +29,48 @@ const client = new Client({
 });
 
 client.config = config;
-client.player = new DisTube(client, {
-  leaveOnStop: config.opt.voiceConfig.leaveOnStop,
-  leaveOnFinish: config.opt.voiceConfig.leaveOnFinish,
-  leaveOnEmpty: config.opt.voiceConfig.leaveOnEmpty.status,
-  emitNewSongOnly: true,
-  emitAddSongWhenCreatingQueue: false,
-  emitAddListWhenCreatingQueue: false,
-  plugins: [
-    new SpotifyPlugin(),
-    new SoundCloudPlugin(),
-    new YtDlpPlugin(),
-    new DeezerPlugin(),
-  ],
-  
-
-});
-
-const player = client.player;
 client.language = config.language || "en";
 let lang = require(`./languages/${config.language || "en"}.js`);
 
-fs.readdir("./events", (_err, files) => {
-  files.forEach((file) => {
-    if (!file.endsWith(".js")) return;
-    const event = require(`./events/${file}`);
-    let eventName = file.split(".")[0];
-    console.log(`${lang.loadclientevent}: ${eventName}`);
-    client.on(eventName, event.bind(null, client));
-    delete require.cache[require.resolve(`./events/${file}`)];
-  });
+fs.readdir("./events", (err, files) => {
+    if (err) {
+        console.error(`Error reading events directory: ${err.message}`);
+        return;
+    }
+    files.forEach((file) => {
+        if (!file.endsWith(".js")) return;
+        const event = require(`./events/${file}`);
+        let eventName = file.split(".")[0];
+        console.log(`${lang.loadclientevent}: ${eventName}`);
+        client.on(eventName, event.bind(null, client));
+        delete require.cache[require.resolve(`./events/${file}`)];
+    });
 });
 
-fs.readdir("./events/player", (_err, files) => {
-  files.forEach((file) => {
-    if (!file.endsWith(".js")) return;
-    const player_events = require(`./events/player/${file}`);
-    let playerName = file.split(".")[0];
-    console.log(`${lang.loadevent}: ${playerName}`);
-    player.on(playerName, player_events.bind(null, client));
-    delete require.cache[require.resolve(`./events/player/${file}`)];
-  });
-});
 
 client.commands = [];
 fs.readdir(config.commandsDir, (err, files) => {
-  if (err) throw err;
-  files.forEach(async (f) => {
-    try {
-      if (f.endsWith(".js")) {
-        let props = require(`${config.commandsDir}/${f}`);
-        client.commands.push({
-          name: props.name,
-          description: props.description,
-          options: props.options,
-        });
-        console.log(`${lang.loadcmd}: ${props.name}`);
-      }
-    } catch (err) {
-      console.log(err);
+    if (err) {
+        console.error(`Error reading commands directory: ${err.message}`);
+        return;
     }
-  });
+    files.forEach(async (f) => {
+        try {
+            if (f.endsWith(".js")) {
+                let props = require(`${config.commandsDir}/${f}`);
+                client.commands.push({
+                    name: props.name,
+                    description: props.description,
+                    options: props.options,
+                });
+                console.log(`${lang.loadcmd}: ${props.name}`);
+            }
+        } catch (err) {
+            console.log(err);
+        }
+    });
 });
+
 
 if (config.TOKEN || process.env.TOKEN) {
   client.login(config.TOKEN || process.env.TOKEN).catch((e) => {
@@ -106,21 +86,23 @@ client.login().catch((e) => {
     console.log('測試成功')
 });
 
-
-if(config.mongodbURL || process.env.MONGO){
-  const mongoose = require("mongoose")
-  mongoose.connect(config.mongodbURL || process.env.MONGO, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  }).then(async () => {
-      console.log(`Connected MongoDB`)
-  }).catch((err) => {
-    console.log("\nMongoDB Error: " + err + "\n\n" + lang.error4)
-    })
-  } else {
-  console.log(lang.error4)
-  }
-
+if (config.ex_mode === true) {
+    if (config.mongodbURL || process.env.MONGO) {
+        const mongoose = require("mongoose")
+        mongoose.connect(config.mongodbURL || process.env.MONGO, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        }).then(async () => {
+            console.log(`Connected MongoDB`);
+        }).catch((err) => {
+            console.log("\nMongoDB Error: " + err + "\n\n" + lang.error4);
+        })
+    } else {
+        console.log(lang.error4);
+    }
+} else if(config.ex_mode === false){
+    console.log("MongoDB未載入\n>原因:基礎模式")
+}
 
 const express = require("express");
 const app = express();

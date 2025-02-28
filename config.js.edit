@@ -1,59 +1,40 @@
 module.exports = {
+    //金鑰(必要)
     TOKEN: "",
+    //普通還進變數(非必要)
     ownerID: [""], 
-    botInvite: "", 
+    botInvite: "",
     supportServer: "", 
-    mongodbURL: "", 
-    status: 'hi',
-    commandsDir: './commands', //如果你不知道你在做什麼  請別動
-    language: "zh_TW", //zh_TW
+    status: 'hi,我是基礎機器人',
+    commandsDir: './commands', //拜託別動
+    language: "zh_TW", //目前只支援zh_TW(繁體中文)
     embedColor: "ffa954", 
     errorLog: "", 
 
-
-    playlistSettings: {
-        maxPlaylist: 10, 
-        maxMusic: 75, 
-    },
-
+    //進階模式
+    ex_mode = false,
+    mongodbURL: "t", //mongodb url(請自行申請)
 
     opt: {
-        DJ: {
-            commands: ['back', 'clear', 'filter', 'loop', 'pause', 'resume', 'skip', 'stop', 'volume', 'shuffle'] //Please don't touch
+        ROOT: {
+            commands: ['debug'] //拜託別動
         },
 
 
-        voiceConfig: {
-            leaveOnFinish: false, 
-            leaveOnStop: false, 
 
-            leaveOnEmpty: { .
-                status: true, 
-                cooldown: 10000000, //1000 = 1 second
-            },
-
-        },
-
-        maxVol: 200, 
+        debug_mode: false, //請不要自行打開
     },
 
 
     sponsor: {
         status: true, 
-        url: "", 
+        url: "", //write your discord sponsor url.
     },
 
-
-    voteManager: { //optional
-        status: false, 
-        api_key: "",  
-        vote_commands: ["back", "channel", "clear", "dj", "filter", "loop", "nowplaying", "pause", "play", "playlist", "queue", "resume", "save", "search", "skip", "stop", "time", "volume"], //write your use by vote commands.
-        vote_url: "", 
-    },
 
 
     shardManager: {
-        shardStatus: false 
+        shardStatus: false //拜託別動
     },
 
 
