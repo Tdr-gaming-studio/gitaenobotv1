@@ -1,6 +1,6 @@
 {
   "name": "gitaenobot-v2",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "gitadiscordbot的簡化版-但是優化了架構",
   "main": "index.js",
   "author": {
