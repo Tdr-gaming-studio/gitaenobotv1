@@ -1,0 +1,3 @@
+C:\Users\鬼神\source\核心開發區\gitaenobot\gitaenobot\obj\Debug\gitaenobot.njsproj.AssemblyReference.cache
+C:\Users\鬼神\source\核心開發區\gitaenobot\gitaenobot\obj\Debug\gitaenobot.njsproj.CoreCompileInputs.cache
+C:\Users\鬼神\source\核心開發區\gitaenobot\gitaenobot\bin\Microsoft.NodejsTools.WebRole.dll
