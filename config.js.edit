@@ -1,0 +1,51 @@
+module.exports = {
+    //金鑰
+    TOKEN: "",
+    mongodbURL: "",
+    //其他資料
+    ownerID: [""], //write your discord user id. example: ["id"] or ["id1","id2"]
+    status: '早安各位',
+    language: "zh-TW", //zh_TW
+    embedColor: "ffa954",
+    errorLog: "",
+
+    //核心設定
+    commandsDir: './commands', //請不要動
+
+    opt: {
+        DJ: {
+            commands: [] 
+        },
+
+        //後續音樂系統相關參數 目前沒作用
+        voiceConfig: {
+            leaveOnFinish: false, 
+            leaveOnStop: false, 
+
+            leaveOnEmpty: { 
+                status:  false, 
+                cooldown: 10000000, //ms
+            },
+
+        },
+
+        maxVol: 200, 
+
+
+    sponsor: {
+        status: false, 
+        url: "", 
+    },
+
+
+    voteManager: { //optional
+        status: false,
+    },
+
+
+    shardManager: {
+        shardStatus: false  //用不到的東西, 不要動
+    },
+
+
+}
