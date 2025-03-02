@@ -1,0 +1,46 @@
+const language = {
+	loadevent: "事件讀取中...",
+	loadcmd: "指令讀取中...",
+	ready: "連線成功！",
+	loadslash: "成功載入機器人 [/] 指令",
+	error1: "機器人 token 錯誤或是未開啟 INTENTS 權限",
+	error2: "請在 token.js 設定機器人 token。",
+	loadclientevent: "客戶端事件讀取中...",
+	embed1: "您必須有 <@&{djRole}>(DJ) 身分組以使用這項指令，用戶沒有此身分組無法使用 {cmdMAP}",
+	message1: "您沒有連線至語音頻道。 ❌",
+	message2: "您必須和我在同一個語音頻道。 ❌",
+	message3: "權限不足。",
+	error3: "重新載入機器人 [/] 指令時發生錯誤：",
+	error4: "警告：看起來您沒有填人 Mongodb 網址？如果您在 config.js 裡沒有填人有效的 Mongodb 網址，您沒辦法使用機器人。",
+	msg13: `🎵 現正播放：**{track?.title}** -> 音樂頻道：**{queue?.connection.channel.name}** 🎧`,
+	msg19: "機器人統計",
+	msg20: "重新整理",
+	msg32: "是時候嘗試這個開源的Discord機器人了，快到 https://github.com/Tdr-gaming-studio/gitaenobot/tree/v2 設定自己的機器人吧！",
+	msg33: "指令",
+	msg34: "您已經輸入過這個指令了。 ❌",
+	msg49: `訊息 Ping`,
+	msg50: `訊息延遲`,
+	msg51: `API 延遲`,
+	msg64: "伺服器音樂列表",
+	msg68: `指令處理已經被取消。 ✅`,
+	msg86: "更新",
+	msg116: `音樂`,
+	msg120: "請指定一個文字頻道。",
+	msg121: "<#{channel}> 已經被設為指令頻道，現在在其他頻道是無效的。",
+	msg122: "目前沒有註冊的資料。",
+	msg123: "<#{channel}> 被移除自指令頻道。",
+	msg124: "這個頻道已經是指令頻道了。",
+	msg125: "這裡似乎不是一個文字頻道。",
+	msg126: "❌ 這是這個伺服器可以使用指令的頻道列表： {channel_filter}",
+	msg127: "指令未被定義。",
+	msg130: "請輸入一個變數。",
+
+	//
+	msgfooter: "linlin - 只睡4小時的初學開發者",
+
+	//
+	loadcmd_fal: "指令未載入(控制項關閉)...",
+	loadcmd_error_lost: "指令未載入(例外錯誤)...",
+
+}
+module.exports = language;
